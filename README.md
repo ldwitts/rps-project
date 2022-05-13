@@ -1,2 +1,3 @@
 # rps-project
-Simple console rock paper scissor game to practice js basics. 
+
+Add a basic UI to the rock paper scissor game.
