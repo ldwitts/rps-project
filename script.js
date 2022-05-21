@@ -3,8 +3,13 @@
 // global variables
 let playerWins = 0;
 let playerLosses = 0;
+const rockButton = document.querySelector('.rock-button');
+const paperButton = document.querySelector('.paper-button');
+const scissorsButton = document.querySelector('.scissors-button');
 
-game();
+rockButton.addEventListener('click', playRoundRock);
+paperButton.addEventListener('click', playRoundPaper);
+scissorsButton.addEventListener('click', playRoundScissors);
 
 ///////////// Functions /////////////
 // Get input from the user and make it uppercase
@@ -31,6 +36,42 @@ function getComputerSelection() {
       break;
   }
   return computerMove.toUpperCase();
+}
+
+function playRoundRock() {
+  const computerSelection = getComputerSelection();
+  const playerSelection = 'ROCK';
+  if (playerSelection === computerSelection) {
+    console.log('tie');
+  } else {
+    computerSelection === 'SCISSORS' ? playerWins++ : playerLosses++;
+  }
+  console.log(`player: ${playerSelection} vs CPU: ${computerSelection}
+  player wins: ${playerWins} CPU wins: ${playerLosses}`);
+}
+
+function playRoundPaper() {
+  const computerSelection = getComputerSelection();
+  const playerSelection = 'PAPER';
+  if (playerSelection === computerSelection) {
+    console.log('tie');
+  } else {
+    computerSelection === 'ROCK' ? playerWins++ : playerLosses++;
+  }
+  console.log(`player: ${playerSelection} vs CPU: ${computerSelection}
+  player wins: ${playerWins} CPU wins: ${playerLosses}`);
+}
+
+function playRoundScissors() {
+  const computerSelection = getComputerSelection();
+  const playerSelection = 'SCISSORS';
+  if (playerSelection === computerSelection) {
+    console.log('tie');
+  } else {
+    computerSelection === 'PAPER' ? playerWins++ : playerLosses++;
+  }
+  console.log(`player: ${playerSelection} vs CPU: ${computerSelection}
+  player wins: ${playerWins} CPU wins: ${playerLosses}`);
 }
 
 // Main game logic, compare two selections and return the result
@@ -70,7 +111,7 @@ ${computerSelection}. You lose, better luck next time.`;
   return result;
 }
 
-function game() {
+function consoleGame() {
   let numberOfRounds = prompt(`How many rounds do you want to play?`);
   numberOfRounds = Number(numberOfRounds);
   for (let i = 0; i < numberOfRounds; i++) {
